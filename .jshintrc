@@ -1,0 +1,31 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "immed": true,
+  "latedef": true,
+  "newcap": true,
+  "noarg": true,
+  "sub": true,
+  "undef": true,
+  "unused": true,
+  "boss": true,
+  "eqnull": true,
+  "node": true,
+  "loopfunc": true,
+  "indent": 2,
+  "trailing": true,
+  "globals": {
+    "requestAnimationFrame": false,
+    "window": false,
+    "THREE": false,
+    "describe": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "it": false,
+    "assert": true,
+    "chai": true,
+    "mocha": false
+  }
+}
