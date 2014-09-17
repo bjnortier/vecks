@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/bjnortier/vex.png?branch=master)](https://travis-ci.org/bjnortier/vex)
+[![Build Status](https://travis-ci.org/bjnortier/vecks.png?branch=master)](https://travis-ci.org/bjnortier/vecks)
 
 # Vex
 

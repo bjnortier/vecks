@@ -1,10 +1,14 @@
 {
-  "name": "vex",
+  "name": "vecks",
   "version": "0.1.0",
   "description": "2D and 3D Vector Algebra library",
   "main": "index.js",
   "scripts": {
     "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bjnortier/vecks.git"
   },
   "keywords": [
     "vector",
