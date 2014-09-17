@@ -8,6 +8,11 @@ assert.v3Equal = function(actual, expected) {
   assert.deepEqual({x: actual.x, y: actual.y, z: actual.z}, expected);
 };
 
+// Equal within 9 decimals
+assert.equalWithin1emin9 = function(actual, expected) {
+  assert.equal(actual.toFixed(9), expected.toFixed(9));
+};
+
 describe('Vec3', function() {
 
   it('can be constructed using an array, params or an object', function() {
@@ -69,4 +74,22 @@ describe('Vec3', function() {
 
   });
 
+  it('has a right-hand angle function', function() {
+
+    var normal = new Vec3(0,0,1);
+    var va = new Vec3(1,0,0);
+    var vb = new Vec3(1,1,0);
+    var vc = new Vec3(0,1,0);
+    var vd = new Vec3(-1,0,0);
+    var ve = new Vec3(0,-1,0);
+
+    assert.equalWithin1emin9(va.rightHandAngle(va, normal), 0);
+    assert.equalWithin1emin9(va.rightHandAngle(vb, normal), Math.PI/4);
+    assert.equalWithin1emin9(va.rightHandAngle(vc, normal), Math.PI/2);
+    assert.equalWithin1emin9(va.rightHandAngle(vd, normal), Math.PI);
+    assert.equalWithin1emin9(va.rightHandAngle(ve, normal), -Math.PI/2);
+
+  });
+
 });
+
