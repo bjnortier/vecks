@@ -1,16 +1,12 @@
 var chai = require('chai');
 var assert = chai.assert;
 
+var Vec3 = require('..').Vec3;
 var Plane3 = require('..').Plane3;
 
 // Handy assert for Plane3 deepEqual
 assert.p3Equal = function(actual, expected) {
   assert.deepEqual({a: actual.a, b: actual.b, c: actual.c, d: actual.d}, expected);
-};
-
-// Equal within 9 decimals
-assert.equalWithin1emin9 = function(actual, expected) {
-  assert.equal(actual.toFixed(9), expected.toFixed(9));
 };
 
 describe('Plane3', function() {
@@ -47,6 +43,24 @@ describe('Plane3', function() {
       p.d = 0;
     }, 'Plane3 is immutable');
 
+  });
+
+  it('can compute the distance to a point', function() {
+
+    var pa = new Plane3(0,0,1,0);
+    assert.equal(pa.distanceToPoint(new Vec3(0,0,0)), 0);
+    assert.equal(pa.distanceToPoint(new Vec3(10,10,0)), 0);
+    assert.equal(pa.distanceToPoint(new Vec3(0,0,1)), 1);
+    assert.equal(pa.distanceToPoint(new Vec3(-10,-10,1)), 1);
+
+    var pb = new Plane3(0,0,1,-10);
+    assert.equal(pb.distanceToPoint(new Vec3(0,0,0)), -10);
+    assert.equal(pb.distanceToPoint(new Vec3(10,10,0)), -10);
+    assert.equal(pb.distanceToPoint(new Vec3(0,0,15)), 5);
+    assert.equal(pb.distanceToPoint(new Vec3(-10,-10,15)), 5);
+
+    var pc = new Plane3(1,1,0,0);
+    assert.equal(pc.distanceToPoint(new Vec3(1,1,0)).toFixed(6), Math.sqrt(2).toFixed(6));
   });
 
 });
