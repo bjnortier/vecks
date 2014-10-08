@@ -26,6 +26,10 @@ describe('Vec3', function() {
     var vc = new Vec3({x: 98, y: -5, z: 22});
     assert.v3Equal(vc, {x: 98, y: -5, z: 22});
 
+    assert.throws(function() {
+      new Vec3('foo');
+    }, 'invalid construction of Vec3');
+
     assert.equal('{"x":3,"y":5,"z":7}', va.toString());
 
   });
