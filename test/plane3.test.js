@@ -45,6 +45,14 @@ describe('Plane3', function() {
 
   });
 
+  it('can be constructed from 3 points', function() {
+    var pa = Plane3.fromPoints(new Vec3(0,0,0), new Vec3(1,0,0), new Vec3(1,1,0));
+    assert.p3Equal(pa, {a: 0, b: 0, c: 1, d: 0});
+
+    var pb = Plane3.fromPoints(new Vec3(0,0,10), new Vec3(1,0,10), new Vec3(1,1,10));
+    assert.p3Equal(pb, {a: 0, b: 0, c: 1, d: -10});
+  });
+
   it('can compute the distance to a point', function() {
 
     var pa = new Plane3(0,0,1,0);
