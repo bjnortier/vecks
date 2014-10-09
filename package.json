@@ -1,6 +1,6 @@
 {
   "name": "vecks",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "2D and 3D Vector Algebra library",
   "main": "index.js",
   "scripts": {
@@ -22,5 +22,8 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-simple-mocha": "^0.4.0"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1"
   }
 }
