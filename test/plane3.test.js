@@ -53,6 +53,14 @@ describe('Plane3', function() {
     assert.p3Equal(pb, {a: 0, b: 0, c: 1, d: -10});
   });
 
+  it('can be constructed from a point a normal', function() {
+    var pa = Plane3.fromPointAndNormal(new Vec3(0,0,0), new Vec3(0,0,1));
+    assert.p3Equal(pa, {a: 0, b: 0, c: 1, d: 0});
+
+    var pb = Plane3.fromPointAndNormal(new Vec3(0,0,10), new Vec3(1,1,1));
+    assert.p3Equal(pb, {a: 1, b: 1, c: 1, d: -10});
+  });
+
   it('can compute the distance to a point', function() {
 
     var pa = new Plane3(0,0,1,0);
