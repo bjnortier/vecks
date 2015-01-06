@@ -20,6 +20,18 @@ module.exports = function(grunt) {
       },
     },
 
+    jscs: {
+      gruntfile: {
+        src: 'Gruntfile.js'
+      },
+      lib: {
+        src: ['lib/**/*.js'],
+      },
+      test: {
+        src: ['test/**/*.js'],
+      },
+    },
+
     simplemocha: {
       options: {
         timeout: 3000,
@@ -37,20 +49,21 @@ module.exports = function(grunt) {
     watch: {
       gruntfile: {
         files: '<%= jshint.gruntfile.src %>',
-        tasks: ['jshint:gruntfile'],
+        tasks: ['jscs:gruntfile', 'jshint:gruntfile'],
       },
       lib: {
         files: ['<%= jshint.lib.src %>'],
-        tasks: ['jshint:lib', 'test'],
+        tasks: ['jscs:lib', 'jshint:lib', 'test'],
       },
       test: {
         files: ['<%= jshint.test.src %>'],
-        tasks: ['jshint:test', 'test'],
+        tasks: ['jscs:test', 'jshint:test', 'test'],
       },
     },
 
   });
 
+  grunt.loadNpmTasks('grunt-jscs');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-simple-mocha');
   grunt.loadNpmTasks('grunt-contrib-watch');
