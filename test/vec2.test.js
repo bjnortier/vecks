@@ -3,23 +3,20 @@ var assert = chai.assert;
 
 var Vec2 = require('..').Vec2;
 
-// Handy assert for Vec2 deepEqual
-assert.v2Equal = function(actual, expected) {
-  assert.deepEqual({x: actual.x, y: actual.y}, expected);
-};
-
 describe('Vec2', function() {
 
   it('can be constructed using an array, params or an object', function() {
 
     var va = new Vec2(3,5);
-    assert.v2Equal(va, {x: 3, y: 5});
+    assert.equal(va.x, 3);
+    assert.equal(va.y, 5);
+    assert.isTrue(va.equals(new Vec2(3,5)));
 
     var vb = new Vec2([-1, 7]);
-    assert.v2Equal(vb, {x: -1, y: 7});
+    assert.isTrue(vb.equals(new Vec2(-1, 7)));
 
     var vc = new Vec2({x: 98, y: -5});
-    assert.v2Equal(vc, {x: 98, y: -5});
+    assert.isTrue(vc.equals(new Vec2(98, -5)));
 
     assert.equal('{"x":3,"y":5}', va.toString());
 
@@ -44,17 +41,17 @@ describe('Vec2', function() {
     var va = new Vec2(11, -7);
     var vb = new Vec2(3, 4);
 
-    assert.v2Equal(va.negate(), {x: -11, y: 7});
+    assert.isTrue(va.negate().equals(new Vec2(-11, 7)));
     assert.equal(va.dot(vb), 5);
     assert.equal(va.length(), Math.sqrt(170));
-    assert.v2Equal(vb.normalize(), {x: 3*0.2, y: 4*0.2});
-    assert.v2Equal(vb.add(va), {x: 14, y: -3});
-    assert.v2Equal(vb.sub(va), {x: -8, y: 11});
-    assert.v2Equal(va.sub(vb), {x: 8, y: -11});
+    assert.isTrue(vb.normalize().equals(new Vec2(3*0.2, 4*0.2)));
+    assert.isTrue(vb.add(va).equals(new Vec2(14, -3)));
+    assert.isTrue(vb.sub(va).equals(new Vec2(-8, 11)));
+    assert.isTrue(va.sub(vb).equals(new Vec2(8, -11)));
 
     // Original vectors are unchanged
-    assert.v2Equal(va, {x: 11, y: -7});
-    assert.v2Equal(vb, {x: 3, y: 4});
+    assert.isTrue(va.equals(new Vec2(11, -7)));
+    assert.isTrue(vb.equals(new Vec2(3, 4)));
 
   });
 
