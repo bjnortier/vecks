@@ -55,4 +55,11 @@ describe('Vec2', function() {
 
   });
 
+  it('can be serialized to an array', function() {
+
+    var v = new Vec2(1,2);
+    assert.deepEqual(v.serialize(), [1,2]);
+
+  });
+
 });
