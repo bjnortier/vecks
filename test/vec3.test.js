@@ -92,5 +92,12 @@ describe('Vec3', function() {
 
   });
 
+  it('can be serialized to an array', function() {
+
+    var v = new Vec3(1,2,3);
+    assert.deepEqual(v.serialize(), [1,2,3]);
+
+  });
+
 });
 
