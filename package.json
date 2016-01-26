@@ -18,11 +18,13 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^1.9.1",
-    "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.10.0",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-jscs": "^1.0.0",
-    "grunt-simple-mocha": "^0.4.0"
+    "gulp": "^3.9.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jscs-stylish": "^1.3.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0"
   },
   "dependencies": {}
 }
