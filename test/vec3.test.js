@@ -64,7 +64,8 @@ describe('Vec3', function() {
       .equals(new Vec3(0, 0, 0)));
 
     assert.equal(va.length(), Math.sqrt(339));
-    assert.isTrue(vb.normalize().equals(new Vec3(3/Math.sqrt(50), 4/Math.sqrt(50), 5/Math.sqrt(50))));
+    assert.isTrue(vb.normalize().equals(
+      new Vec3(3/Math.sqrt(50), 4/Math.sqrt(50), 5/Math.sqrt(50))));
     assert.isTrue(vb.add(va).equals(new Vec3(14, -3, 18)));
     assert.isTrue(vb.sub(va).equals(new Vec3(-8, 11, -8)));
     assert.isTrue(va.sub(vb).equals(new Vec3(8, -11, 8)));
@@ -100,4 +101,3 @@ describe('Vec3', function() {
   });
 
 });
-
