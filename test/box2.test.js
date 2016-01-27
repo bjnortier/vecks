@@ -32,7 +32,7 @@ describe('Box2', function() {
 
   });
 
-  it('can be expanded from by an array of points', function() {
+  it('can be expanded from by an array of points (inclusive)', function() {
 
     var p1 = new Vec2(-1,-7);
     var p2 = new Vec2(5,11);
@@ -46,19 +46,22 @@ describe('Box2', function() {
 
   });
 
-  it('can test whether a point lies inside it', function() {
+  it('can test whether a point lies inside it (exclusive)', function() {
 
     var p1 = new Vec2(0,0);
     var p2 = new Vec2(100,100);
     var box = Box2.fromPoints([p1, p2]);
+    var inclusive = false;
 
-    assert.isTrue(box.isPointInside(new Vec2(0,0)));
-    assert.isTrue(box.isPointInside(new Vec2(100,0)));
-    assert.isTrue(box.isPointInside(new Vec2(50,0)));
+    assert.isFalse(box.isPointInside(new Vec2(0,0), inclusive));
+    assert.isFalse(box.isPointInside(new Vec2(100,0), inclusive));
+    assert.isTrue(box.isPointInside(new Vec2(50,10), inclusive));
 
-    assert.isFalse(box.isPointInside(new Vec2(-1,0)));
-    assert.isFalse(box.isPointInside(new Vec2(101,0)));
+    assert.isFalse(box.isPointInside(new Vec2(-1,0), inclusive));
+    assert.isFalse(box.isPointInside(new Vec2(101,0), inclusive));
 
+    var b2 = Box2.fromPoints([new Vec2(0,0), new Vec2(20, 10)]);
+    assert.isFalse(b2.isPointInside(new Vec2(10,10), inclusive));
   });
 
 });
