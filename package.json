@@ -1,6 +1,6 @@
 {
   "name": "vecks",
-  "version": "1.4.5",
+  "version": "2.0.0",
   "description": "2D and 3D Vector Algebra library",
   "main": "lib/index.js",
   "scripts": {
