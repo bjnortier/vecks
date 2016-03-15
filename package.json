@@ -27,6 +27,5 @@
     "jshint-stylish": "^2.1.0"
   },
   "dependencies": {
-    "lodash.isobject": "^3.0.2"
   }
 }
