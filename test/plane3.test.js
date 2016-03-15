@@ -9,7 +9,7 @@ assert.p3Equal = function(actual, expected) {
   assert.deepEqual({a: actual.a, b: actual.b, c: actual.c, d: actual.d}, expected);
 };
 
-describe('Plane3', function() {
+describe.skip('Plane3', function() {
 
   it('can be constructed using arguments or an object', function() {
 

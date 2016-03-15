@@ -14,7 +14,7 @@ assert.equalWithin1emin9 = function(actual, expected) {
   assert.equal(actual.toFixed(9), expected.toFixed(9));
 };
 
-describe('Quaternion', function() {
+describe.skip('Quaternion', function() {
 
   it('can be constructed', function() {
 
@@ -59,4 +59,3 @@ describe('Quaternion', function() {
   });
 
 });
-

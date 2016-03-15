@@ -4,7 +4,7 @@ var assert = chai.assert;
 var Box2 = require('..').Box2;
 var Vec2 = require('..').Vec2;
 
-describe('Box2', function() {
+describe.skip('Box2', function() {
 
   it('can be expaned by a point', function() {
 
