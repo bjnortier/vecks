@@ -2,7 +2,7 @@
   "name": "vecks",
   "version": "1.4.5",
   "description": "2D and 3D Vector Algebra library",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "gulp test"
   },

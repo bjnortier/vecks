@@ -2,4 +2,4 @@
 
 # Vecks
 
-A 2D and 3D Vector Algebra library. All objects are immutable.
+A 2D and 3D Vector Algebra library, where vectors are arrays.
