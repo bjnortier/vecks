@@ -1,10 +1,16 @@
 {
   "name": "vecks",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "2D and 3D Vector Algebra library",
   "main": "lib/index.js",
   "scripts": {
-    "test": "gulp test"
+    "eslint": "eslint .",
+    "eslint:watch": "eslint run-script sass -- --eslint",
+    "unit": "mocha --compilers js:babel-register --recursive test/**",
+    "unit:watch": "npm run unit -- --watch",
+    "test": "npm run eslint && npm run unit",
+    "compile": "babel --optional runtime -d lib/ src/",
+    "postinstall": "postinstall-build lib \"npm run compile\""
   },
   "repository": {
     "type": "git",
@@ -17,15 +23,17 @@
   "author": "Ben Nortier <ben@bjnortier.com>",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^1.9.1",
-    "gulp": "^3.9.0",
-    "gulp-jscs": "^3.0.2",
-    "gulp-jscs-stylish": "^1.3.0",
-    "gulp-jshint": "^2.0.0",
-    "gulp-mocha": "^2.2.0",
-    "jshint": "^2.9.1",
-    "jshint-stylish": "^2.1.0"
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.22.1",
+    "babel-plugin-transform-es2015-destructuring": "^6.22.0",
+    "babel-plugin-transform-object-rest-spread": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-register": "^6.22.0",
+    "eslint": "^3.14.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.2.0"
   },
   "dependencies": {
+    "postinstall-build": "^2.1.3"
   }
 }
