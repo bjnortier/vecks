@@ -2,18 +2,13 @@ import expect from 'expect'
 
 import V3 from '../src/V3'
 
-// Equal within 9 decimals
-// assert.equalWithin1emin9 = function(actual, expected) {
-//   assert.equal(actual.toFixed(9), expected.toFixed(9))
-// }
-
 const expectV3Equal = (v1, v2) => {
   expect(v1.x).toEqual(v2.x)
   expect(v1.y).toEqual(v2.y)
   expect(v1.z).toEqual(v2.z)
 }
 
-describe('vec3', function() {
+describe('V3', function() {
 
   it('operations', function() {
 

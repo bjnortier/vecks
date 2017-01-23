@@ -1,6 +1,8 @@
-module.exports.vec2 = require('./vec2')
-module.exports.vec3 = require('./vec3')
-module.exports.Box2 = require('./Box2')
-module.exports.Box3 = require('./Box3')
-module.exports.plane3 = require('./plane3')
-module.exports.quaternion = require('./quaternion')
+import V2 from './V2'
+import V3 from './V3'
+import Box2 from './Box2'
+import Box3 from './Box3'
+import Plane3 from './Plane3'
+import Quaternion from './Quaternion'
+
+export { V2, V3, Box2, Box3, Plane3, Quaternion }

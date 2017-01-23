@@ -1,51 +1,40 @@
-'use strict'
+import V2 from './V2'
 
-// # class Box2
-function Box2(min, max) {
-  this.min = min || [Infinity, Infinity]
-  this.max = max || [-Infinity, -Infinity]
+class Box2 {
+
+  constructor(min, max) {
+    this.min = min || new V2(Infinity, Infinity)
+    this.max = max || new V2(-Infinity, -Infinity)
+  }
+
+  expandByPoint(p) {
+    this.min = new V2(
+      Math.min(this.min.x, p.x),
+      Math.min(this.min.y, p.y))
+    this.max = new V2(
+      Math.max(this.max.x, p.x),
+      Math.max(this.max.y, p.y))
+    return this
+  }
+
+  expandByPoints(points) {
+    points.forEach(function(point) {
+      this.expandByPoint(point)
+    }, this)
+    return this
+  }
+
+  isPointInside(p) {
+    return (
+      (p.x >= this.min.x) &&
+      (p.y >= this.min.y) &&
+      (p.x <= this.max.x) &&
+      (p.y <= this.max.y))
+  }
 }
 
-Box2.prototype.expandByPoint = function(p) {
-  this.min = [
-    Math.min(this.min[0], p[0]),
-    Math.min(this.min[1], p[1]),
-  ]
-  this.max = [
-    Math.max(this.max[0], p[0]),
-    Math.max(this.max[1], p[1]),
-  ]
-  return this
-}
-
-Box2.prototype.expandByPoints = function(points) {
-  points.forEach(function(point) {
-    this.expandByPoint(point)
-  }, this)
-  return this
-}
-
-Box2.fromPoints = function(points) {
+Box2.fromPoints = (points) => {
   return new Box2().expandByPoints(points)
 }
 
-Box2.prototype.isPointInside = function(p, inclusive) {
-  if (inclusive === undefined) {
-    inclusive = true
-  }
-  if (inclusive) {
-    return (
-      (p[0] >= this.min[0]) &&
-      (p[1] >= this.min[1]) &&
-      (p[0] <= this.max[0]) &&
-      (p[1] <= this.max[1]))
-  } else {
-    return (
-      (p[0] > this.min[0]) &&
-      (p[1] > this.min[1]) &&
-      (p[0] < this.max[0]) &&
-      (p[1] < this.max[1]))
-  }
-}
-
-module.exports = Box2
+export default Box2
