@@ -1,0 +1,50 @@
+import expect from 'expect'
+
+import Box2 from '../src/Box2'
+import V2 from '../src/V2'
+
+describe('Box2', function() {
+
+  it('can be expaned by a point', function() {
+    const p1 = { x: -1, y: -7 }
+    const p2 = { x: 5,  y: 11 }
+    const box = new Box2().expandByPoint(p1).expandByPoint(p2)
+    expect(box.min.x).toEqual(-1)
+    expect(box.min.y).toEqual(-7)
+    expect(box.max.x).toEqual(5)
+    expect(box.max.y).toEqual(11)
+  })
+
+  it('can be expanded by points', function() {
+    const p1 = { x: -1, y: -7 }
+    const p2 = { x: 5,  y: 11 }
+    const box = new Box2().expandByPoints([p1, p2])
+    expect(box.min.x).toEqual(-1)
+    expect(box.min.y).toEqual(-7)
+    expect(box.max.x).toEqual(5)
+    expect(box.max.y).toEqual(11)
+  })
+
+  it('can be constructed from an array of points', function() {
+    const p1 = { x: -1, y: -7 }
+    const p2 = { x: 5,  y: 11 }
+    const box = Box2.fromPoints([p1, p2])
+    expect(box.min.x).toEqual(-1)
+    expect(box.min.y).toEqual(-7)
+    expect(box.max.x).toEqual(5)
+    expect(box.max.y).toEqual(11)
+  })
+
+  it('can test whether a point lies inside it', function() {
+    var p1 = { x: 5,   y:  11 }
+    var p2 = { x: 100, y: 50 }
+    var box = Box2.fromPoints([p1, p2])
+    expect(box.isPointInside(new V2(100,11))).toBe(true)
+    expect(box.isPointInside(new V2(5,50))).toBe(true)
+    expect(box.isPointInside(new V2(50,20))).toBe(true)
+    expect(box.isPointInside(new V2(0,0))).toBe(false)
+    expect(box.isPointInside(new V2(-1,10))).toBe(false)
+    expect(box.isPointInside(new V2(101,51))).toBe(false)
+  })
+
+})
