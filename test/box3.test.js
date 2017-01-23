@@ -1,57 +1,55 @@
-'use strict';
+import expect from 'expect'
 
-var chai = require('chai');
-var assert = chai.assert;
-
-var Box3 = require('..').Box3;
+import Box3 from '../src/Box3'
+import V3 from '../src/V3'
 
 describe('Box3', function() {
 
   it('can be expaned by a point', function() {
-    var p1 = [-1,-7,-13];
-    var p2 = [5,11,17];
-    var box = new Box3().expandByPoint(p1).expandByPoint(p2);
-    assert.equal(box.min[0], -1);
-    assert.equal(box.min[1], -7);
-    assert.equal(box.min[2], -13);
-    assert.equal(box.max[0], 5);
-    assert.equal(box.max[1], 11);
-    assert.equal(box.max[2], 17);
-  });
+    const p1 = { x: -1, y: -7, z:-13 }
+    const p2 = { x: 5,  y: 11, z: 17 }
+    const box = new Box3().expandByPoint(p1).expandByPoint(p2)
+    expect(box.min.x).toEqual(-1)
+    expect(box.min.y).toEqual(-7)
+    expect(box.min.z).toEqual(-13)
+    expect(box.max.x).toEqual(5)
+    expect(box.max.y).toEqual(11)
+    expect(box.max.z).toEqual(17)
+  })
 
   it('can be expanded by points', function() {
-    var p1 = [-1,-7,-13];
-    var p2 = [5,11,17];
-    var box = new Box3().expandByPoints([p1, p2]);
-    assert.equal(box.min[0], -1);
-    assert.equal(box.min[1], -7);
-    assert.equal(box.min[2], -13);
-    assert.equal(box.max[0], 5);
-    assert.equal(box.max[1], 11);
-    assert.equal(box.max[2], 17);
-  });
+    const p1 = { x: -1, y: -7, z:-13 }
+    const p2 = { x: 5,  y: 11, z: 17 }
+    const box = new Box3().expandByPoints([p1, p2])
+    expect(box.min.x).toEqual(-1)
+    expect(box.min.y).toEqual(-7)
+    expect(box.min.z).toEqual(-13)
+    expect(box.max.x).toEqual(5)
+    expect(box.max.y).toEqual(11)
+    expect(box.max.z).toEqual(17)
+  })
 
   it('can be constructed from an array of points', function() {
-    var p1 = [-1,-7,-13];
-    var p2 = [5,11,17];
-    var box = Box3.fromPoints([p1, p2]);
-    assert.equal(box.min[0], -1);
-    assert.equal(box.min[1], -7);
-    assert.equal(box.min[2], -13);
-    assert.equal(box.max[0], 5);
-    assert.equal(box.max[1], 11);
-    assert.equal(box.max[2], 17);
-  });
+    const p1 = { x: -1, y: -7, z:-13 }
+    const p2 = { x: 5,  y: 11, z: 17 }
+    const box = Box3.fromPoints([p1, p2])
+    expect(box.min.x).toEqual(-1)
+    expect(box.min.y).toEqual(-7)
+    expect(box.min.z).toEqual(-13)
+    expect(box.max.x).toEqual(5)
+    expect(box.max.y).toEqual(11)
+    expect(box.max.z).toEqual(17)
+  })
 
   it('can test whether a point lies inside it', function() {
-    var p1 = [0,0,0];
-    var p2 = [100,0,100];
-    var box = Box3.fromPoints([p1, p2]);
-    assert.isTrue(box.isPointInside([0,0,0]));
-    assert.isTrue(box.isPointInside([100,0,100]));
-    assert.isTrue(box.isPointInside([50,0,20]));
-    assert.isFalse(box.isPointInside([-1,0,0]));
-    assert.isFalse(box.isPointInside([101,0,0]));
-  });
-
-});
+    var p1 = { x: 0,   y: 0, z: 0 }
+    var p2 = { x: 100, y: 0, z: 100 }
+    var box = Box3.fromPoints([p1, p2])
+    expect(box.isPointInside(new V3(0,0,0))).toBe(true)
+    expect(box.isPointInside(new V3(100,0,100))).toBe(true)
+    expect(box.isPointInside(new V3(50,0,20))).toBe(true)
+    expect(box.isPointInside(new V3(-1,0,0))).toBe(false)
+    expect(box.isPointInside(new V3(101,0,0))).toBe(false)
+  })
+//
+})
