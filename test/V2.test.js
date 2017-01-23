@@ -9,11 +9,14 @@ const expectV2Equal = (v1, v2) => {
 
 describe('V2', function() {
 
+  it('constructs from arguments or an object', function() {
+    const va = new V2(7, -19)
+    expectV2Equal(va, new V2({x: 7, y: -19}))
+  })
+
   it('operations', function() {
-
-    var va = new V2(11, -7)
-    var vb = new V2(3, 4)
-
+    const va = new V2(11, -7)
+    const vb = new V2(3, 4)
     expectV2Equal(va, new V2(11, -7))
     expectV2Equal(va.neg(), new V2(-11, 7))
     expect(va.dot(vb)).toEqual(5)

@@ -12,7 +12,7 @@ class Plane3 {
   // Distance to a point
   // http://mathworld.wolfram.com/Point-PlaneDistance.html eq 10
   distanceToPoint(p0) {
-    var dd = (this.a*p0.x + this.b*p0.y + this.c*p0.z + this.d) /
+    const dd = (this.a*p0.x + this.b*p0.y + this.c*p0.z + this.d) /
       Math.sqrt(this.a*this.a + this.b*this.b + this.c*this.c)
     return dd
   }

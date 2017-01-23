@@ -36,9 +36,9 @@ describe('Box2', function() {
   })
 
   it('can test whether a point lies inside it', function() {
-    var p1 = { x: 5,   y:  11 }
-    var p2 = { x: 100, y: 50 }
-    var box = Box2.fromPoints([p1, p2])
+    const p1 = { x: 5,   y:  11 }
+    const p2 = { x: 100, y: 50 }
+    const box = Box2.fromPoints([p1, p2])
     expect(box.isPointInside(new V2(100,11))).toBe(true)
     expect(box.isPointInside(new V2(5,50))).toBe(true)
     expect(box.isPointInside(new V2(50,20))).toBe(true)
