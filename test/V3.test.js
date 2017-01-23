@@ -10,10 +10,15 @@ const expectV3Equal = (v1, v2) => {
 
 describe('V3', function() {
 
+  it('constructs from arguments or an object', function() {
+    const va = new V3(7, -19, 23)
+    expectV3Equal(va, new V3({x: 7, y: -19, z: 23}))
+  })
+
   it('operations', function() {
 
-    var va = new V3(11, -7, 13)
-    var vb = new V3(3, 4, 5)
+    const va = new V3(11, -7, 13)
+    const vb = new V3(3, 4, 5)
 
     expectV3Equal(va.neg(), new V3(-11, 7, -13))
     expect(va.length()).toEqual(Math.sqrt(339))
