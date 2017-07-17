@@ -4,11 +4,10 @@
   "description": "2D and 3D Vector Algebra library",
   "main": "lib/index.js",
   "scripts": {
-    "eslint": "eslint .",
-    "eslint:watch": "eslint run-script sass -- --eslint",
+    "lint": "standard .",
     "unit": "mocha --compilers js:babel-register --recursive test/**",
     "unit:watch": "npm run unit -- --watch",
-    "test": "npm run eslint && npm run unit",
+    "test": "npm run lint && npm run unit",
     "compile": "babel --optional runtime -d lib/ src/"
   },
   "repository": {
@@ -30,9 +29,20 @@
     "babel-register": "^6.22.0",
     "eslint": "^3.14.0",
     "expect": "^1.20.2",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "standard": "^10.0.2"
   },
-  "dependencies": {
-    "postinstall-build": "5.0.1"
+  "dependencies": {},
+  "standard": {
+    "globals": [
+      "describe",
+      "it",
+      "before",
+      "beforeEach",
+      "after"
+    ],
+    "ignore": [
+      "lib/"
+    ]
   }
 }

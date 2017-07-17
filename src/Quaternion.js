@@ -4,15 +4,14 @@ import V3 from './V3'
 // https://github.com/mrdoob/three.js/blob/master/src/math/Quaternion.js
 
 class Quaternion {
-
-  constructor(x, y, z, w) {
+  constructor (x, y, z, w) {
     this.x = x
     this.y = y
     this.z = z
     this.w = w
   }
 
-  applyToVec3(v3) {
+  applyToVec3 (v3) {
     const x = v3.x
     const y = v3.y
     const z = v3.z
@@ -23,9 +22,9 @@ class Quaternion {
     const qw = this.w
 
     // calculate quat * vector
-    const ix =  qw * x + qy * z - qz * y
-    const iy =  qw * y + qz * x - qx * z
-    const iz =  qw * z + qx * y - qy * x
+    const ix = qw * x + qy * z - qz * y
+    const iy = qw * y + qz * x - qx * z
+    const iz = qw * z + qx * y - qy * x
     const iw = -qx * x - qy * y - qz * z
 
     // calculate result * inverse quat
@@ -39,7 +38,7 @@ class Quaternion {
 Quaternion.fromAxisAngle = (axis, angle) => {
   // http://www.euclideanspace.com/maths/geometry/rotations/conversions/angleToQuaternion/index.htm
   const axisNorm = axis.norm()
-  const halfAngle = angle/2
+  const halfAngle = angle / 2
   const s = Math.sin(halfAngle)
   return new Quaternion(
     axisNorm.x * s,
@@ -47,6 +46,5 @@ Quaternion.fromAxisAngle = (axis, angle) => {
     axisNorm.z * s,
     Math.cos(halfAngle))
 }
-
 
 export default Quaternion

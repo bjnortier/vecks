@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/bjnortier/vecks.png?branch=master)](https://travis-ci.org/bjnortier/vecks)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
 
 # Vecks
 
