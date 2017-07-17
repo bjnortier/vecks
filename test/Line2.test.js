@@ -20,15 +20,15 @@ describe('Line2', function () {
 
   it('can caculate intersections', function () {
     expect(function () {
-      new Line2(new V2(0, 0), new V2(1, 0)).getIntersection([]) // eslint-disable-line no-new
+      new Line2(new V2(0, 0), new V2(1, 0)).intersects([]) // eslint-disable-line no-new
     }).toThrow('expected argument to be an instance of vecks.Line2')
 
     expect(new Line2(new V2(0, 0), new V2(1, 0))
-      .getIntersection(new Line2(new V2(0, 0), new V2(1, 0))))
-      .toEqual(null)
+      .intersects(new Line2(new V2(0, 0), new V2(1, 0))))
+      .toEqual(false)
 
-    expectV2Equal(new Line2(new V2(0, 0), new V2(1, 1))
-      .getIntersection(new Line2(new V2(0, 1), new V2(1, 0))),
-      new V2(0.5, 0.5))
+    expect(new Line2(new V2(0, 0), new V2(1, 1))
+      .intersects(new Line2(new V2(0, 1), new V2(1, 0))))
+      .toEqual(true)
   })
 })
