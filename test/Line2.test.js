@@ -1,7 +1,6 @@
 import expect from 'expect'
 
-import Line2 from '../src/Line2'
-import V2 from '../src/V2'
+import { Line2, V2 } from '../src'
 import { expectV2Equal } from './util'
 
 describe('Line2', function () {

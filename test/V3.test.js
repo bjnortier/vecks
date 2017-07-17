@@ -1,6 +1,6 @@
 import expect from 'expect'
 
-import V3 from '../src/V3'
+import { V3 } from '../src'
 
 const expectV3Equal = (v1, v2) => {
   expect(v1.x).toEqual(v2.x)

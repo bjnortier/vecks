@@ -1,6 +1,6 @@
 import expect from 'expect'
-import Quaternion from '../src/Quaternion'
-import V3 from '../src/V3'
+
+import { Quaternion, V3 } from '../src'
 
 const expectWithin1e9 = (a, b) => {
   expect(Math.abs(a - b) < 1e-1).toBe(true)
