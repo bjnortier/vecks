@@ -1,6 +1,6 @@
 {
   "name": "vecks",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "2D and 3D Vector Algebra library",
   "main": "lib/index.js",
   "scripts": {
@@ -9,8 +9,7 @@
     "unit": "mocha --compilers js:babel-register --recursive test/**",
     "unit:watch": "npm run unit -- --watch",
     "test": "npm run eslint && npm run unit",
-    "compile": "babel --optional runtime -d lib/ src/",
-    "postinstall": "postinstall-build lib \"npm run compile\""
+    "compile": "babel --optional runtime -d lib/ src/"
   },
   "repository": {
     "type": "git",
