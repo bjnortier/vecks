@@ -1,7 +1,6 @@
 import expect from 'expect'
 
-import V3 from '../src/V3'
-import Plane3 from '../src/Plane3'
+import { Plane3, V3 } from '../src'
 
 const expectPlane3Equal = (p1, p2) => {
   expect(p1.a).toEqual(p2.a)

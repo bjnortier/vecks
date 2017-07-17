@@ -1,7 +1,6 @@
 import expect from 'expect'
 
-import Box2 from '../src/Box2'
-import V2 from '../src/V2'
+import { Box2, V2 } from '../src'
 
 describe('Box2', function () {
   it('can be expaned by a point', function () {

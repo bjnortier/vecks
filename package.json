@@ -8,7 +8,8 @@
     "unit": "mocha --compilers js:babel-register --recursive test/**",
     "unit:watch": "npm run unit -- --watch",
     "test": "npm run lint && npm run unit",
-    "compile": "babel --optional runtime -d lib/ src/"
+    "compile": "babel --optional runtime -d lib/ src/",
+    "prepublish": "npm run compile"
   },
   "repository": {
     "type": "git",
