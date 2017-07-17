@@ -9,8 +9,7 @@
     "unit": "mocha --compilers js:babel-register --recursive test/**",
     "unit:watch": "npm run unit -- --watch",
     "test": "npm run eslint && npm run unit",
-    "compile": "babel --optional runtime -d lib/ src/",
-    "postinstall": "postinstall-build lib \"npm run compile\""
+    "compile": "babel --optional runtime -d lib/ src/"
   },
   "repository": {
     "type": "git",
