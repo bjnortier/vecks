@@ -1,13 +1,12 @@
 import V2 from './V2'
 
 class Box2 {
-
-  constructor(min, max) {
+  constructor (min, max) {
     this.min = min || new V2(Infinity, Infinity)
     this.max = max || new V2(-Infinity, -Infinity)
   }
 
-  expandByPoint(p) {
+  expandByPoint (p) {
     this.min = new V2(
       Math.min(this.min.x, p.x),
       Math.min(this.min.y, p.y))
@@ -17,14 +16,14 @@ class Box2 {
     return this
   }
 
-  expandByPoints(points) {
-    points.forEach(function(point) {
+  expandByPoints (points) {
+    points.forEach(function (point) {
       this.expandByPoint(point)
     }, this)
     return this
   }
 
-  isPointInside(p) {
+  isPointInside (p) {
     return (
       (p.x >= this.min.x) &&
       (p.y >= this.min.y) &&

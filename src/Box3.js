@@ -1,41 +1,40 @@
 
 class Box3 {
-
-  constructor(min, max) {
+  constructor (min, max) {
     this.min = min || {
       x: Infinity,
       y: Infinity,
-      z: Infinity,
+      z: Infinity
     }
     this.max = max || {
       x: -Infinity,
       y: -Infinity,
-      z: -Infinity,
+      z: -Infinity
     }
   }
 
-  expandByPoint(p) {
+  expandByPoint (p) {
     this.min = {
       x: Math.min(this.min.x, p.x),
       y: Math.min(this.min.y, p.y),
-      z: Math.min(this.min.z, p.z),
+      z: Math.min(this.min.z, p.z)
     }
     this.max = {
       x: Math.max(this.max.x, p.x),
       y: Math.max(this.max.y, p.y),
-      z: Math.max(this.max.z, p.z),
+      z: Math.max(this.max.z, p.z)
     }
     return this
   }
 
-  expandByPoints(points) {
-    points.forEach(function(point) {
+  expandByPoints (points) {
+    points.forEach(function (point) {
       this.expandByPoint(point)
     }, this)
     return this
   }
 
-  isPointInside(p) {
+  isPointInside (p) {
     return (
       (p.x >= this.min.x) &&
       (p.y >= this.min.y) &&
