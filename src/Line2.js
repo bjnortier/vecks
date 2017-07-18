@@ -42,7 +42,6 @@ const getIntersection = (m, n) => {
   const px = ((x1 * y2 - y1 * x2) * (x34) - (x12) * (x3 * y4 - y3 * x4)) / c
   const py = ((x1 * y2 - y1 * x2) * (y34) - (y12) * (x3 * y4 - y3 * x4)) / c
 
-  console.log(px, py)
   if (isNaN(px) || isNaN(py)) {
     return null
   } else {
