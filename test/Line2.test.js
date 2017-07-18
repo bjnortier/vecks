@@ -30,5 +30,17 @@ describe('Line2', function () {
     expect(new Line2(new V2(0, 0), new V2(1, 1))
       .intersects(new Line2(new V2(0, 1), new V2(1, 0))))
       .toEqual(true)
+
+    expectV2Equal(new Line2(new V2(0, 0), new V2(1, 0))
+      .getIntersection(new Line2(new V2(0, 0), new V2(1, 1))),
+      new V2(0.0, 0.0))
+
+    expectV2Equal(new Line2(new V2(0, 0), new V2(1, 1))
+      .getIntersection(new Line2(new V2(0, 1), new V2(1, 0))),
+      new V2(0.5, 0.5))
+
+    expect(new Line2(new V2(1, 0), new V2(1, 1))
+      .getIntersection(new Line2(new V2(0, 2), new V2(2, 2))))
+      .toEqual(null)
   })
 })
