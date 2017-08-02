@@ -49,16 +49,20 @@ const getIntersection = (m, n) => {
   }
 }
 
+const dist = (a, b) => {
+  return Math.sqrt(Math.pow(a.x - b.x, 2) + Math.pow(a.y - b.y, 2))
+}
+
 class Line2 {
   constructor (a, b) {
-    if (!(a instanceof V2)) {
-      throw new Error('expected first argument to be an instance of vecks.V2')
+    if ((typeof a !== 'object') || (a.x === undefined) || (a.y === undefined)) {
+      throw Error('expected first argument to have x and y properties')
     }
-    if (!(b instanceof V2)) {
-      throw new Error('expected second argument to be an instance of vecks.V2')
+    if ((typeof b !== 'object') || (b.x === undefined) || (b.y === undefined)) {
+      throw Error('expected second argument to have x and y properties')
     }
-    this.a = a
-    this.b = b
+    this.a = new V2(a)
+    this.b = new V2(b)
   }
 
   length () {
@@ -78,6 +82,11 @@ class Line2 {
     } else {
       return null
     }
+  }
+
+  containsPoint (point, eps = 1e-12) {
+    return Math.abs(
+      dist(this.a, this.b) - dist(point, this.a) - dist(point, this.b)) < eps
   }
 }
 
