@@ -1,5 +1,3 @@
-'use strict'
-
 class Plane3 {
   constructor (a, b, c, d) {
     this.a = a
@@ -14,6 +12,20 @@ class Plane3 {
     const dd = (this.a * p0.x + this.b * p0.y + this.c * p0.z + this.d) /
       Math.sqrt(this.a * this.a + this.b * this.b + this.c * this.c)
     return dd
+  }
+
+  coPlanar (other) {
+    const coPlanarAndSameNormal =
+      ((this.a === other.a) &&
+       (this.b === other.b) &&
+       (this.c === other.c) &&
+       (this.d === other.d))
+    const coPlanarAndReversedNormal =
+      ((this.a === -other.a) &&
+       (this.b === -other.b) &&
+       (this.c === -other.c) &&
+       (this.d === -other.d))
+    return coPlanarAndSameNormal || coPlanarAndReversedNormal
   }
 }
 

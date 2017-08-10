@@ -50,4 +50,16 @@ describe('Plane3', function () {
     const pc = new Plane3(1, 1, 0, 0)
     expect(pc.distanceToPoint(new V3(1, 1, 0)).toFixed(6)).toEqual(Math.sqrt(2).toFixed(6))
   })
+
+  it('can be tested for co-planarity', () => {
+    const pa = Plane3.fromPoints(new V3(1, 0, 0), new V3(1, 1, 0), new V3(1, 1, 1))
+    // Same but from offset
+    const pb = Plane3.fromPoints(new V3(1, 1, 0), new V3(1, 2, 0), new V3(1, 2, 1))
+    // Same but negative normal
+    const pc = Plane3.fromPoints(new V3(1, 0, 0), new V3(1, 0, 1), new V3(1, 1, 1))
+    const px = Plane3.fromPoints(new V3(0.5, 0, 0), new V3(0.5, 1, 0), new V3(0.5, 1, 1))
+    expect(pa.coPlanar(pb)).toEqual(true)
+    expect(pa.coPlanar(pc)).toEqual(true)
+    expect(pa.coPlanar(px)).toEqual(false)
+  })
 })

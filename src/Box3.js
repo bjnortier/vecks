@@ -1,4 +1,3 @@
-
 class Box3 {
   constructor (min, max) {
     this.min = min || {
