@@ -14,6 +14,13 @@ class Plane3 {
     return dd
   }
 
+  equals (other) {
+    return ((this.a === other.a) &&
+            (this.b === other.b) &&
+            (this.c === other.c) &&
+            (this.d === other.d))
+  }
+
   coPlanar (other) {
     const coPlanarAndSameNormal =
       ((this.a === other.a) &&
@@ -38,11 +45,28 @@ Plane3.fromPointAndNormal = (p, n) => {
   return new Plane3(n.x, n.y, n.z, d)
 }
 
-Plane3.fromPoints = (pa, pb, pc) => {
-  const ab = pb.sub(pa)
-  const bc = pc.sub(pb)
-  const n = ab.cross(bc).norm()
-  return Plane3.fromPointAndNormal(pa, n)
+Plane3.fromPoints = (points) => {
+  let validCross
+  for (let i = 0, il = points.length; i < il; ++i) {
+    const ab = points[(i + 1) % il].sub(points[i])
+    const bc = points[(i + 2) % il].sub(points[(i + 1) % il])
+    const cross = ab.cross(bc)
+    if (!(isNaN(cross.length()) || (cross.length() === 0))) {
+      if (!validCross) {
+        validCross = cross.norm()
+      } else {
+        const same = cross.norm().equals(validCross)
+        const opposite = cross.neg().norm().equals(validCross)
+        if (!(same || opposite)) {
+          throw Error('points not on a plane')
+        }
+      }
+    }
+  }
+  if (!validCross) {
+    throw Error('points not on a plane')
+  }
+  return Plane3.fromPointAndNormal(points[0], validCross.norm())
 }
 
 export default Plane3

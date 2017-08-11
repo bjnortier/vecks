@@ -1,31 +1,30 @@
 import expect from 'expect'
 
 import { Line2, V2 } from '../src'
-import { expectV2Equal } from './util'
 
-describe('Line2', function () {
-  it('expects objects with x and y properties', function () {
-    expect(function () {
+describe('Line2', () => {
+  it('expects objects with x and y properties', () => {
+    expect(() => {
       new Line2() // eslint-disable-line no-new
     }).toThrow('expected first argument to have x and y properties')
-    expect(function () {
+    expect(() => {
       new Line2({a: 1}) // eslint-disable-line no-new
     }).toThrow('expected first argument to have x and y properties')
-    expect(function () {
+    expect(() => {
       new Line2({x: 0, y: 0}) // eslint-disable-line no-new
     }).toThrow('expected second argument to have x and y properties')
-    expect(function () {
+    expect(() => {
       new Line2({x: 0, y: 0}, {z: 2}) // eslint-disable-line no-new
     }).toThrow('expected second argument to have x and y properties')
   })
 
-  it('has a length', function () {
+  it('has a length', () => {
     const a = new Line2(new V2(0, 0), new V2(1, 0))
     expect(a.length()).toEqual(1)
   })
 
-  it('can caculate intersections', function () {
-    expect(function () {
+  it('can caculate intersections', () => {
+    expect(() => {
       new Line2(new V2(0, 0), new V2(1, 0)).intersects([]) // eslint-disable-line no-new
     }).toThrow('expected argument to be an instance of vecks.Line2')
 
@@ -37,13 +36,13 @@ describe('Line2', function () {
       .intersects(new Line2(new V2(0, 1), new V2(1, 0))))
       .toEqual(true)
 
-    expectV2Equal(new Line2(new V2(0, 0), new V2(1, 0))
-      .getIntersection(new Line2(new V2(0, 0), new V2(1, 1))),
-      new V2(0.0, 0.0))
+    expect(new Line2(new V2(0, 0), new V2(1, 0))
+      .getIntersection(new Line2(new V2(0, 0), new V2(1, 1)))
+      .equals(new V2(0.0, 0.0))).toEqual(true)
 
-    expectV2Equal(new Line2(new V2(0, 0), new V2(1, 1))
-      .getIntersection(new Line2(new V2(0, 1), new V2(1, 0))),
-      new V2(0.5, 0.5))
+    expect(new Line2(new V2(0, 0), new V2(1, 1))
+      .getIntersection(new Line2(new V2(0, 1), new V2(1, 0)))
+      .equals(new V2(0.5, 0.5))).toEqual(true)
 
     expect(new Line2(new V2(1, 0), new V2(1, 1))
       .getIntersection(new Line2(new V2(0, 2), new V2(2, 2))))
