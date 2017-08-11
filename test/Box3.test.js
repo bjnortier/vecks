@@ -2,8 +2,8 @@ import expect from 'expect'
 
 import { Box3, V3 } from '../src'
 
-describe('Box3', function () {
-  it('can be expaned by a point', function () {
+describe('Box3', () => {
+  it('can be expaned by a point', () => {
     const p1 = { x: -1, y: -7, z: -13 }
     const p2 = { x: 5, y: 11, z: 17 }
     const box = new Box3().expandByPoint(p1).expandByPoint(p2)
@@ -15,7 +15,7 @@ describe('Box3', function () {
     expect(box.max.z).toEqual(17)
   })
 
-  it('can be expanded by points', function () {
+  it('can be expanded by points', () => {
     const p1 = { x: -1, y: -7, z: -13 }
     const p2 = { x: 5, y: 11, z: 17 }
     const box = new Box3().expandByPoints([p1, p2])
@@ -27,7 +27,7 @@ describe('Box3', function () {
     expect(box.max.z).toEqual(17)
   })
 
-  it('can be constructed from an array of points', function () {
+  it('can be constructed from an array of points', () => {
     const p1 = { x: -1, y: -7, z: -13 }
     const p2 = { x: 5, y: 11, z: 17 }
     const box = Box3.fromPoints([p1, p2])
@@ -39,7 +39,7 @@ describe('Box3', function () {
     expect(box.max.z).toEqual(17)
   })
 
-  it('can test whether a point lies inside it', function () {
+  it('can test whether a point lies inside it', () => {
     var p1 = { x: 0, y: 0, z: 0 }
     var p2 = { x: 100, y: 0, z: 100 }
     var box = Box3.fromPoints([p1, p2])

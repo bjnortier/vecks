@@ -9,6 +9,11 @@ class V2 {
     }
   }
 
+  equals (other) {
+    return ((this.x === other.x) &&
+            (this.y === other.y))
+  }
+
   length () {
     return Math.sqrt(this.dot(this))
   }

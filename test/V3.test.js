@@ -2,33 +2,30 @@ import expect from 'expect'
 
 import { V3 } from '../src'
 
-const expectV3Equal = (v1, v2) => {
-  expect(v1.x).toEqual(v2.x)
-  expect(v1.y).toEqual(v2.y)
-  expect(v1.z).toEqual(v2.z)
-}
-
-describe('V3', function () {
-  it('constructs from arguments or an object', function () {
+describe('V3', () => {
+  it('constructs from arguments or an object', () => {
     const va = new V3(7, -19, 23)
-    expectV3Equal(va, new V3({x: 7, y: -19, z: 23}))
+    expect(va.equals(new V3({x: 7, y: -19, z: 23}))).toEqual(true)
+    expect(va.equals(new V3({x: 0, y: -19, z: 23}))).toEqual(false)
+    expect(va.equals(new V3({x: 7, y: 0, z: 23}))).toEqual(false)
+    expect(va.equals(new V3({x: 7, y: -19, z: 0}))).toEqual(false)
   })
 
-  it('operations', function () {
+  it('operations', () => {
     const va = new V3(11, -7, 13)
     const vb = new V3(3, 4, 5)
 
-    expectV3Equal(va.neg(), new V3(-11, 7, -13))
+    expect(va.neg().equals(new V3(-11, 7, -13))).toEqual(true)
     expect(va.length()).toEqual(Math.sqrt(339))
-    expectV3Equal(vb.norm(), new V3(3 / Math.sqrt(50), 4 / Math.sqrt(50), 5 / Math.sqrt(50)))
+    expect(vb.norm().equals(new V3(3 / Math.sqrt(50), 4 / Math.sqrt(50), 5 / Math.sqrt(50)))).toEqual(true)
 
-    expectV3Equal(va.multiply(3), new V3(33, -21, 39))
-    expectV3Equal(va.add(vb), new V3(14, -3, 18))
-    expectV3Equal(vb.sub(va), new V3(-8, 11, -8))
+    expect(va.multiply(3).equals(new V3(33, -21, 39))).toEqual(true)
+    expect(va.add(vb).equals(new V3(14, -3, 18))).toEqual(true)
+    expect(vb.sub(va).equals(new V3(-8, 11, -8))).toEqual(true)
 
     expect(va.dot(vb)).toEqual(70)
-    expectV3Equal(va.cross(vb), new V3(-87, -16, 65))
-    expectV3Equal(new V3(3, -3, 1).cross(new V3(4, 9, 2)), new V3(-15, -2, 39))
-    expectV3Equal(new V3(3, -3, 1).cross(new V3(-12, 12, -4)), new V3(0, 0, 0))
+    expect(va.cross(vb).equals(new V3(-87, -16, 65))).toEqual(true)
+    expect(new V3(3, -3, 1).cross(new V3(4, 9, 2)).equals(new V3(-15, -2, 39))).toEqual(true)
+    expect(new V3(3, -3, 1).cross(new V3(-12, 12, -4)).equals(new V3(0, 0, 0))).toEqual(true)
   })
 })

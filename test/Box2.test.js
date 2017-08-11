@@ -2,8 +2,8 @@ import expect from 'expect'
 
 import { Box2, V2 } from '../src'
 
-describe('Box2', function () {
-  it('can be expaned by a point', function () {
+describe('Box2', () => {
+  it('can be expaned by a point', () => {
     const p1 = { x: -1, y: -7 }
     const p2 = { x: 5, y: 11 }
     const box = new Box2().expandByPoint(p1).expandByPoint(p2)
@@ -13,7 +13,7 @@ describe('Box2', function () {
     expect(box.max.y).toEqual(11)
   })
 
-  it('can be expanded by points', function () {
+  it('can be expanded by points', () => {
     const p1 = { x: -1, y: -7 }
     const p2 = { x: 5, y: 11 }
     const box = new Box2().expandByPoints([p1, p2])
@@ -23,7 +23,7 @@ describe('Box2', function () {
     expect(box.max.y).toEqual(11)
   })
 
-  it('can be constructed from an array of points', function () {
+  it('can be constructed from an array of points', () => {
     const p1 = { x: -1, y: -7 }
     const p2 = { x: 5, y: 11 }
     const box = Box2.fromPoints([p1, p2])
@@ -33,7 +33,7 @@ describe('Box2', function () {
     expect(box.max.y).toEqual(11)
   })
 
-  it('can test whether a point lies inside it', function () {
+  it('can test whether a point lies inside it', () => {
     const p1 = { x: 5, y: 11 }
     const p2 = { x: 100, y: 50 }
     const box = Box2.fromPoints([p1, p2])

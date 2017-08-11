@@ -17,7 +17,7 @@ class Box2 {
   }
 
   expandByPoints (points) {
-    points.forEach(function (point) {
+    points.forEach(point => {
       this.expandByPoint(point)
     }, this)
     return this
