@@ -46,27 +46,27 @@ Plane3.fromPointAndNormal = (p, n) => {
 }
 
 Plane3.fromPoints = (points) => {
-  let validCross
+  let firstCross
   for (let i = 0, il = points.length; i < il; ++i) {
     const ab = points[(i + 1) % il].sub(points[i])
     const bc = points[(i + 2) % il].sub(points[(i + 1) % il])
     const cross = ab.cross(bc)
     if (!(isNaN(cross.length()) || (cross.length() === 0))) {
-      if (!validCross) {
-        validCross = cross.norm()
+      if (!firstCross) {
+        firstCross = cross.norm()
       } else {
-        const same = cross.norm().equals(validCross)
-        const opposite = cross.neg().norm().equals(validCross)
+        const same = cross.norm().equals(firstCross, 1e-6)
+        const opposite = cross.neg().norm().equals(firstCross, 1e-6)
         if (!(same || opposite)) {
           throw Error('points not on a plane')
         }
       }
     }
   }
-  if (!validCross) {
+  if (!firstCross) {
     throw Error('points not on a plane')
   }
-  return Plane3.fromPointAndNormal(points[0], validCross.norm())
+  return Plane3.fromPointAndNormal(points[0], firstCross.norm())
 }
 
 export default Plane3

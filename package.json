@@ -1,6 +1,6 @@
 {
   "name": "vecks",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "description": "2D and 3D Vector Algebra library",
   "main": "lib/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "unit:watch": "npm run unit -- --watch",
     "test": "npm run lint && npm run unit",
     "compile": "babel --optional runtime -d lib/ src/",
-    "prepublish": "npm run compile"
+    "prepare": "npm run compile"
   },
   "repository": {
     "type": "git",

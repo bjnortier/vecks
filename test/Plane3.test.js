@@ -43,6 +43,13 @@ describe('Plane3', () => {
       new V3(2, -1, 10)
     ])
     expect(pd.equals(new Plane3(0, 0, 1, -10))).toEqual(true)
+
+    // Numeric stability observed emprirically (no exception)
+    Plane3.fromPoints([
+      new V3(40.44921, 0, 24.162658773653),
+      new V3(33.006805707785, 0, 34.150635094611),
+      new V3(31.862976320958, -8.537658773653, 34.150635094611)
+    ])
   })
 
   it('throws an Error when points don\'t form a plane', () => {
