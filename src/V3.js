@@ -11,10 +11,13 @@ class V3 {
     }
   }
 
-  equals (other) {
-    return ((this.x === other.x) &&
-            (this.y === other.y) &&
-            (this.z === other.z))
+  equals (other, eps) {
+    if (eps === undefined) {
+      eps = 0
+    }
+    return ((Math.abs(this.x - other.x) <= eps) &&
+            (Math.abs(this.y - other.y) <= eps) &&
+            (Math.abs(this.z - other.z) <= eps))
   }
 
   length () {
