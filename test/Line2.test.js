@@ -49,7 +49,7 @@ describe('Line2', () => {
       .toEqual(null)
   })
 
-  it('point coincidence', () => {
+  it('can test if it containts a point', () => {
     const a = new Line2({x: 0, y: 0}, {x: 10, y: 0})
     expect(a.containsPoint(new V2(0, 0))).toEqual(true)
     expect(a.containsPoint(new V2(10, 0))).toEqual(true)
