@@ -5,5 +5,6 @@ import Box3 from './Box3'
 import Plane3 from './Plane3'
 import Quaternion from './Quaternion'
 import Line2 from './Line2'
+import Line3 from './Line3'
 
-export { V2, V3, Box2, Box3, Plane3, Quaternion, Line2 }
+export { V2, V3, Box2, Box3, Plane3, Quaternion, Line2, Line3 }
