@@ -9,6 +9,9 @@ describe('V3', () => {
     expect(va.equals(new V3({x: 0, y: -19, z: 23}))).toEqual(false)
     expect(va.equals(new V3({x: 7, y: 0, z: 23}))).toEqual(false)
     expect(va.equals(new V3({x: 7, y: -19, z: 0}))).toEqual(false)
+
+    const vb = new V3()
+    expect(vb.equals(new V3({x: 0, y: 0, z: 0}))).toEqual(true)
   })
 
   it('operations', () => {

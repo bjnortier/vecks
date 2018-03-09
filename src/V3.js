@@ -4,6 +4,10 @@ class V3 {
       this.x = x.x
       this.y = x.y
       this.z = x.z
+    } else if (x === undefined) {
+      this.x = 0
+      this.y = 0
+      this.z = 0
     } else {
       this.x = x
       this.y = y
