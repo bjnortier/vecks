@@ -1,6 +1,6 @@
 {
   "name": "vecks",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "2D and 3D Vector Algebra library",
   "main": "lib/index.js",
   "scripts": {
@@ -33,7 +33,9 @@
     "mocha": "^3.2.0",
     "standard": "^10.0.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "npm": "^5.7.1"
+  },
   "standard": {
     "globals": [
       "describe",
