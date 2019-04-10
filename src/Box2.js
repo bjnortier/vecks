@@ -6,6 +6,11 @@ class Box2 {
     this.max = max || new V2(-Infinity, -Infinity)
   }
 
+  equals (other) {
+    return ((this.min.equals(other.min)) &&
+            (this.max.equals(other.max)))
+  }
+
   expandByPoint (p) {
     this.min = new V2(
       Math.min(this.min.x, p.x),

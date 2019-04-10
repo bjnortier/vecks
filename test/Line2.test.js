@@ -8,13 +8,13 @@ describe('Line2', () => {
       new Line2() // eslint-disable-line no-new
     }).toThrow('expected first argument to have x and y properties')
     expect(() => {
-      new Line2({a: 1}) // eslint-disable-line no-new
+      new Line2({ a: 1 }) // eslint-disable-line no-new
     }).toThrow('expected first argument to have x and y properties')
     expect(() => {
-      new Line2({x: 0, y: 0}) // eslint-disable-line no-new
+      new Line2({ x: 0, y: 0 }) // eslint-disable-line no-new
     }).toThrow('expected second argument to have x and y properties')
     expect(() => {
-      new Line2({x: 0, y: 0}, {z: 2}) // eslint-disable-line no-new
+      new Line2({ x: 0, y: 0 }, { z: 2 }) // eslint-disable-line no-new
     }).toThrow('expected second argument to have x and y properties')
   })
 
@@ -50,7 +50,7 @@ describe('Line2', () => {
   })
 
   it('can test if it containts a point', () => {
-    const a = new Line2({x: 0, y: 0}, {x: 10, y: 0})
+    const a = new Line2({ x: 0, y: 0 }, { x: 10, y: 0 })
     expect(a.containsPoint(new V2(0, 0))).toEqual(true)
     expect(a.containsPoint(new V2(10, 0))).toEqual(true)
     expect(a.containsPoint(new V2(5, 0))).toEqual(true)

@@ -8,13 +8,13 @@ describe('Line3', () => {
       new Line3() // eslint-disable-line no-new
     }).toThrow('expected first argument to have x, y and z properties')
     expect(() => {
-      new Line3({a: 1}) // eslint-disable-line no-new
+      new Line3({ a: 1 }) // eslint-disable-line no-new
     }).toThrow('expected first argument to have x, y and z properties')
     expect(() => {
-      new Line3({x: 0, y: 0, z: 0}) // eslint-disable-line no-new
+      new Line3({ x: 0, y: 0, z: 0 }) // eslint-disable-line no-new
     }).toThrow('expected second argument to have x, y and z properties')
     expect(() => {
-      new Line3({x: 0, y: 0, z: 0}, {z: 2}) // eslint-disable-line no-new
+      new Line3({ x: 0, y: 0, z: 0 }, { z: 2 }) // eslint-disable-line no-new
     }).toThrow('expected second argument to have x, y and z properties')
   })
 
@@ -27,7 +27,7 @@ describe('Line3', () => {
   })
 
   it('can test if it containts a point', () => {
-    const a = new Line3({x: 0, y: 0, z: 2}, {x: 10, y: 0, z: 2})
+    const a = new Line3({ x: 0, y: 0, z: 2 }, { x: 10, y: 0, z: 2 })
     expect(a.containsPoint(new V3(0, 0, 2))).toEqual(true)
     expect(a.containsPoint(new V3(10, 0, 2))).toEqual(true)
     expect(a.containsPoint(new V3(5, 0, 2))).toEqual(true)
@@ -49,7 +49,7 @@ describe('Line3', () => {
     const eps = 0.1
     expect(a.containsPoint(new V3(5, 0.1, 2), eps)).toEqual(true)
 
-    const b = new Line3({x: 0, y: 0, z: 0}, {x: 1, y: 2, z: 3})
+    const b = new Line3({ x: 0, y: 0, z: 0 }, { x: 1, y: 2, z: 3 })
     expect(b.containsPoint(new V3(0.2, 0.4, 0.6), 1e-6)).toEqual(true)
   })
 })

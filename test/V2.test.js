@@ -5,9 +5,9 @@ import { V2 } from '../src'
 describe('V2', () => {
   it('constructs from arguments or an object', () => {
     const va = new V2(7, -19)
-    expect(va.equals(new V2({x: 7, y: -19}))).toEqual(true)
-    expect(va.equals(new V2({x: 0, y: -19}))).toEqual(false)
-    expect(va.equals(new V2({x: 7, y: 0}))).toEqual(false)
+    expect(va.equals(new V2({ x: 7, y: -19 }))).toEqual(true)
+    expect(va.equals(new V2({ x: 0, y: -19 }))).toEqual(false)
+    expect(va.equals(new V2({ x: 7, y: 0 }))).toEqual(false)
   })
 
   it('operations', () => {
