@@ -3,7 +3,7 @@ import expect from 'expect'
 import { Box2, V2 } from '../src'
 
 describe('Box2', () => {
-  it('can be expaned by a point', () => {
+  it('can be expanded by a point', () => {
     const p1 = { x: -1, y: -7 }
     const p2 = { x: 5, y: 11 }
     const box = new Box2().expandByPoint(p1).expandByPoint(p2)
@@ -43,5 +43,13 @@ describe('Box2', () => {
     expect(box.isPointInside(new V2(0, 0))).toBe(false)
     expect(box.isPointInside(new V2(-1, 10))).toBe(false)
     expect(box.isPointInside(new V2(101, 51))).toBe(false)
+  })
+
+  it('has an equals method', () => {
+    const box1 = new Box2()
+    expect(box1.equals(new Box2())).toEqual(true)
+    expect(new Box2(new V2(1, 3), new V2(7, 11))
+      .equals(new Box2(new V2(1, 3), new V2(7, 11))))
+      .toEqual(true)
   })
 })
