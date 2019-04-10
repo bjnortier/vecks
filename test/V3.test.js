@@ -5,13 +5,13 @@ import { V3 } from '../src'
 describe('V3', () => {
   it('constructs from arguments or an object', () => {
     const va = new V3(7, -19, 23)
-    expect(va.equals(new V3({x: 7, y: -19, z: 23}))).toEqual(true)
-    expect(va.equals(new V3({x: 0, y: -19, z: 23}))).toEqual(false)
-    expect(va.equals(new V3({x: 7, y: 0, z: 23}))).toEqual(false)
-    expect(va.equals(new V3({x: 7, y: -19, z: 0}))).toEqual(false)
+    expect(va.equals(new V3({ x: 7, y: -19, z: 23 }))).toEqual(true)
+    expect(va.equals(new V3({ x: 0, y: -19, z: 23 }))).toEqual(false)
+    expect(va.equals(new V3({ x: 7, y: 0, z: 23 }))).toEqual(false)
+    expect(va.equals(new V3({ x: 7, y: -19, z: 0 }))).toEqual(false)
 
     const vb = new V3()
-    expect(vb.equals(new V3({x: 0, y: 0, z: 0}))).toEqual(true)
+    expect(vb.equals(new V3({ x: 0, y: 0, z: 0 }))).toEqual(true)
   })
 
   it('operations', () => {
