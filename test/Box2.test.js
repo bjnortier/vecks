@@ -52,4 +52,10 @@ describe('Box2', () => {
       .equals(new Box2(new V2(1, 3), new V2(7, 11))))
       .toEqual(true)
   })
+
+  it('has width and height', () => {
+    const b = new Box2(new V2(1, 3), new V2(7, 11))
+    expect(b.width).toEqual(6)
+    expect(b.height).toEqual(8)
+  })
 })

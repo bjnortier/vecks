@@ -11,6 +11,14 @@ class Box2 {
             (this.max.equals(other.max)))
   }
 
+  get width () {
+    return this.max.x - this.min.x
+  }
+
+  get height () {
+    return this.max.y - this.min.y
+  }
+
   expandByPoint (p) {
     this.min = new V2(
       Math.min(this.min.x, p.x),
