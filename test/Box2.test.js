@@ -3,6 +3,28 @@ import expect from 'expect'
 import { Box2, V2 } from '../src'
 
 describe('Box2', () => {
+  it('can be constructed from {x,y} objects', () => {
+    expect(() => new Box2(1, [])).toThrow('Illegal construction - must use { x, y } objects')
+    const a = { x: 3, y: 5 }
+    const b = { x: 11, y: 13 }
+    const x = new Box2(a, b)
+    // Check object is copied
+    a.x = 4
+    a.y = 5
+    b.x = 6
+    b.y = 7
+    expect(x.min.x).toEqual(3)
+    expect(x.min.y).toEqual(5)
+    expect(x.max.x).toEqual(11)
+    expect(x.max.y).toEqual(13)
+    expect(x.valid).toEqual(true)
+  })
+
+  it('has has an "invalid" state', () => {
+    const box = new Box2()
+    expect(box.valid).toEqual(false)
+  })
+
   it('can be expanded by a point', () => {
     const p1 = { x: -1, y: -7 }
     const p2 = { x: 5, y: 11 }
@@ -11,6 +33,7 @@ describe('Box2', () => {
     expect(box.min.y).toEqual(-7)
     expect(box.max.x).toEqual(5)
     expect(box.max.y).toEqual(11)
+    expect(box.valid).toEqual(true)
   })
 
   it('can be expanded by points', () => {
@@ -21,6 +44,7 @@ describe('Box2', () => {
     expect(box.min.y).toEqual(-7)
     expect(box.max.x).toEqual(5)
     expect(box.max.y).toEqual(11)
+    expect(box.valid).toEqual(true)
   })
 
   it('can be constructed from an array of points', () => {
@@ -31,6 +55,7 @@ describe('Box2', () => {
     expect(box.min.y).toEqual(-7)
     expect(box.max.x).toEqual(5)
     expect(box.max.y).toEqual(11)
+    expect(box.valid).toEqual(true)
   })
 
   it('can test whether a point lies inside it', () => {
@@ -46,8 +71,7 @@ describe('Box2', () => {
   })
 
   it('has an equals method', () => {
-    const box1 = new Box2()
-    expect(box1.equals(new Box2())).toEqual(true)
+    expect(() => new Box2().equals(new Box2())).toThrow('Box2 is invalid')
     expect(new Box2(new V2(1, 3), new V2(7, 11))
       .equals(new Box2(new V2(1, 3), new V2(7, 11))))
       .toEqual(true)
@@ -57,5 +81,8 @@ describe('Box2', () => {
     const b = new Box2(new V2(1, 3), new V2(7, 11))
     expect(b.width).toEqual(6)
     expect(b.height).toEqual(8)
+
+    expect(() => new Box2().width).toThrow('Box2 is invalid')
+    expect(() => new Box2().height).toThrow('Box2 is invalid')
   })
 })
