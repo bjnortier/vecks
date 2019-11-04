@@ -2,20 +2,40 @@ import V2 from './V2'
 
 class Box2 {
   constructor (min, max) {
-    this.min = min || new V2(Infinity, Infinity)
-    this.max = max || new V2(-Infinity, -Infinity)
+    if (typeof min === 'object' && typeof max === 'object' &&
+        min.x !== undefined && min.y !== undefined &&
+        max.x !== undefined && max.y !== undefined) {
+      this.min = new V2(min)
+      this.max = new V2(max)
+      this.valid = true
+    } else if (min === undefined && max === undefined) {
+      this.min = new V2(Infinity, Infinity)
+      this.max = new V2(-Infinity, -Infinity)
+      this.valid = false
+    } else {
+      throw Error('Illegal construction - must use { x, y } objects')
+    }
   }
 
   equals (other) {
+    if (!this.valid) {
+      throw Error('Box2 is invalid')
+    }
     return ((this.min.equals(other.min)) &&
             (this.max.equals(other.max)))
   }
 
   get width () {
+    if (!this.valid) {
+      throw Error('Box2 is invalid')
+    }
     return this.max.x - this.min.x
   }
 
   get height () {
+    if (!this.valid) {
+      throw Error('Box2 is invalid')
+    }
     return this.max.y - this.min.y
   }
 
@@ -26,6 +46,7 @@ class Box2 {
     this.max = new V2(
       Math.max(this.max.x, p.x),
       Math.max(this.max.y, p.y))
+    this.valid = true
     return this
   }
 

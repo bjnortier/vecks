@@ -1,28 +1,63 @@
+import V3 from './V3'
+
 class Box3 {
   constructor (min, max) {
-    this.min = min || {
-      x: Infinity,
-      y: Infinity,
-      z: Infinity
-    }
-    this.max = max || {
-      x: -Infinity,
-      y: -Infinity,
-      z: -Infinity
+    if (typeof min === 'object' && typeof max === 'object' &&
+        min.x !== undefined && min.y !== undefined && min.z !== undefined &&
+        max.x !== undefined && max.y !== undefined && max.z !== undefined) {
+      this.min = new V3(min)
+      this.max = new V3(max)
+      this.valid = true
+    } else if (min === undefined && max === undefined) {
+      this.min = new V3(Infinity, Infinity, Infinity)
+      this.max = new V3(-Infinity, -Infinity, -Infinity)
+      this.valid = false
+    } else {
+      throw Error('Illegal construction - must use { x, y, z } objects')
     }
   }
 
+  equals (other) {
+    if (!this.valid) {
+      throw Error('Box3 is invalid')
+    }
+    return ((this.min.equals(other.min)) &&
+            (this.max.equals(other.max)))
+  }
+
+  get width () {
+    if (!this.valid) {
+      throw Error('Box3 is invalid')
+    }
+    return this.max.x - this.min.x
+  }
+
+  get depth () {
+    if (!this.valid) {
+      throw Error('Box3 is invalid')
+    }
+    return this.max.y - this.min.y
+  }
+
+  get height () {
+    if (!this.valid) {
+      throw Error('Box3 is invalid')
+    }
+    return this.max.z - this.min.z
+  }
+
   expandByPoint (p) {
-    this.min = {
-      x: Math.min(this.min.x, p.x),
-      y: Math.min(this.min.y, p.y),
-      z: Math.min(this.min.z, p.z)
-    }
-    this.max = {
-      x: Math.max(this.max.x, p.x),
-      y: Math.max(this.max.y, p.y),
-      z: Math.max(this.max.z, p.z)
-    }
+    this.min = new V3(
+      Math.min(this.min.x, p.x),
+      Math.min(this.min.y, p.y),
+      Math.min(this.min.z, p.z)
+    )
+    this.max = new V3(
+      Math.max(this.max.x, p.x),
+      Math.max(this.max.y, p.y),
+      Math.max(this.max.z, p.z)
+    )
+    this.valid = true
     return this
   }
 
